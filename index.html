@@ -39,6 +39,129 @@
   <body>
     <!-- Header section -->
     <header class="header">
+      <!-- mobile modal -->
+      <div class="mobile-menu">
+        <div class="mobile-menu-container">
+          <button
+            type="button"
+            class="mobile-menu-close"
+          >
+            <svg
+              width="8"
+              height="8"
+            >
+              <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+          </button>
+
+          <nav class="mobile-menu-nav">
+            <ul class="mobile-menu-list">
+              <li>
+                <a
+                  class="mobile-menu-link current"
+                  href=""
+                  >Studio</a
+                >
+              </li>
+              <li>
+                <a
+                  class="mobile-menu-link"
+                  href=""
+                  >Portfolio</a
+                >
+              </li>
+              <li>
+                <a
+                  class="mobile-menu-link"
+                  href=""
+                  >Contacts</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="mobile-menu-bottom">
+            <address class="mobile-menu-contacts">
+              <ul class="mobile-contacts-list">
+                <li class="mobile-contacts-item">
+                  <a
+                    class="mobile-phone"
+                    href="tel:+110001111111"
+                    >+11 (000) 111-11-11</a
+                  >
+                </li>
+                <li class="mobile-contacts-item">
+                  <a
+                    class="mobile-email"
+                    href="mailto:info@devstudio.com"
+                    >info@devstudio.com</a
+                  >
+                </li>
+              </ul>
+            </address>
+
+            <ul class="mobile-social">
+              <li class="mobile-social-item">
+                <a
+                  href=""
+                  class="mobile-social-link"
+                >
+                  <svg
+                    class="mobile-social-icon"
+                    width="24"
+                    height="24"
+                  >
+                    <use href="./images/icons.svg#icon-instagram-2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="mobile-social-item">
+                <a
+                  href=""
+                  class="mobile-social-link"
+                >
+                  <svg
+                    class="mobile-social-icon"
+                    width="24"
+                    height="24"
+                  >
+                    <use href="./images/icons.svg#icon-twitter-1"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="mobile-social-item">
+                <a
+                  href=""
+                  class="mobile-social-link"
+                >
+                  <svg
+                    class="mobile-social-icon"
+                    width="24"
+                    height="24"
+                  >
+                    <use href="./images/icons.svg#icon-facebook-1"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="mobile-social-item">
+                <a
+                  href=""
+                  class="mobile-social-link"
+                >
+                  <svg
+                    class="mobile-social-icon"
+                    width="24"
+                    height="24"
+                  >
+                    <use href="./images/icons.svg#icon-linkedin-1"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- end mobile nav -->
       <div class="container">
         <nav class="header-nav">
           <a
@@ -88,13 +211,25 @@
             </li>
           </ul>
         </address>
+        <button
+          type="button"
+          class="burger-btn"
+        >
+          <svg
+            class="burger-icon"
+            width="24"
+            height="24"
+          >
+            <use href="./images/icons.svg#burger-menu"></use>
+          </svg>
+        </button>
       </div>
     </header>
 
     <!-- Main section -->
     <main>
       <!-- Hero section -->
-      <section class="hero hide">
+      <section class="hero">
         <div class="container">
           <h1 class="hero-title">Effective Solutions for Your Business</h1>
           <button
@@ -107,7 +242,7 @@
         </div>
       </section>
       <!-- Features section -->
-      <section class="section features hide">
+      <section class="section features">
         <div class="container">
           <h2 class="visually-hidden">Our Features</h2>
           <ul class="features-list">
@@ -179,7 +314,7 @@
         </div>
       </section>
       <!-- Team section -->
-      <section class="section team-section hide">
+      <section class="section team-section">
         <div class="container">
           <h2 class="team-title">Our Team</h2>
           <ul class="team-list">
@@ -267,7 +402,7 @@
                 <h3 class="team-member">Tom Ford</h3>
                 <p class="team-pos">Frontend Developer</p>
 
-                <ul class="team-soc-list">
+                <ul class="team-soc-list mobile-social">
                   <li class="team-soc-item">
                     <a
                       class="team-soc-link"
