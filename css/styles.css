@@ -315,13 +315,13 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-  .logo {
+  .header-logo {
     margin-right: 120px; /* Для планшета */
   }
 }
 
 @media screen and (min-width: 1158px) {
-  .logo {
+  .header-logo {
     margin-right: 76px; /* Відступ з'являється тільки від планшета */
   }
 }
@@ -816,6 +816,7 @@ p {
 .portfolio-item {
   width: 100%; /* На мобілці одна картка на всю ширину */
   background-color: #ffffff;
+  /* База (мобайл/планшет) — тінь є */
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -830,6 +831,7 @@ p {
 @media screen and (min-width: 1158px) {
   .portfolio-item {
     width: calc((100% - 48px) / 3); /* 3 колонки на десктопі */
+    box-shadow: none; /* ПРИМУСОВО прибираємо на десктопі */
   }
   .portfolio-item:hover {
     /* Додаємо тінь ТІЛЬКИ при наведенні */
@@ -838,10 +840,10 @@ p {
   }
 }
 
-.portfolio-item:hover {
+/* .portfolio-item:hover {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-}
+} */
 
 .portfolio-image-wrapper {
   position: relative;
@@ -937,16 +939,15 @@ p {
 
 .footer-social-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* Центруємо на мобайлі */
   gap: 16px;
 }
 
-/* zagubleo */
 .footer-social-item {
   width: 40px;
   height: 40px;
 }
-/* zagubleo */
+
 .footer-social-link {
   width: 100%;
   height: 100%;
@@ -957,13 +958,13 @@ p {
   justify-content: center;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* zagubleo */
+
 .footer-social-link:hover,
 .footer-social-link:focus {
   background-color: #31d0aa;
   /* Зелений за ТЗ */
 }
-/* zagubleo */
+
 .footer-social-icon {
   fill: var(--light);
 }
@@ -1020,6 +1021,9 @@ p {
     justify-content: flex-start;
     gap: 72px 24px;
     padding-left: 108px;
+  }
+  .footer-social-list {
+    justify-content: flex-start; /* Повертаємо вліво від планшета */
   }
   .footer-subscribe-btn {
     margin: 0;
@@ -1155,25 +1159,29 @@ p {
 .modal {
   /* 1. Робимо гумову ширину для мобайла */
   width: calc(100% - 36px);
-  max-width: 392px; /* Але не більше 408px */
+  /* Обмежуємо мобільну ширину до ~288px (для екрана 320px) */
+  max-width: 288px;
+  /* max-width: 392px; Але не більше 408px */
 
   /* 2. Прибираємо фіксовану висоту*/
   min-height: auto;
   /* min-height: 584px; */
 
   /* 3. Встановлюємо правильні мобільні паддінги (16px) */
-  padding: 72px 16px 24px 16px; /* Менші бокові паддінги на мобайлі */
+  /* Тільки 16px для мобайла! */
+  padding: 72px 16px 24px 16px;
 
   position: relative; /* Додаємо контекст для кнопки-хрестика */
   background-color: #fcfcfc;
   border-radius: 4px;
-  padding: 72px 24px 24px 24px;
+  /* padding: 72px 24px 24px 24px; */
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 @media screen and (min-width: 768px) {
   .modal {
+    max-width: 408px; /* Розширюємо на планшеті */
     width: 408px; /* Фіксована на планшеті та десктопі */
     /* 4. Повертаємо десктопні розміри та паддінги (24px) */
     padding: 72px 24px 24px 24px;
