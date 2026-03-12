@@ -1025,6 +1025,33 @@
         </form>
       </div>
     </div>
-    <script src="./js/modal.js"></script>
+    <script>
+      (() => {
+        const refs = {
+          // Модальне вікно
+          openModalBtn: document.querySelector("[data-modal-open]"),
+          closeModalBtn: document.querySelector("[data-modal-close]"),
+          modal: document.querySelector("[data-modal]"),
+          // Мобільне меню
+          openMenuBtn: document.querySelector(".burger-btn"),
+          closeMenuBtn: document.querySelector(".mobile-menu-close"),
+          menu: document.querySelector(".mobile-menu"),
+        };
+
+        refs.openModalBtn?.addEventListener("click", () =>
+          refs.modal.classList.add("is-open")
+        );
+        refs.closeModalBtn?.addEventListener("click", () =>
+          refs.modal.classList.remove("is-open")
+        );
+
+        refs.openMenuBtn?.addEventListener("click", () =>
+          refs.menu.classList.add("is-open")
+        );
+        refs.closeMenuBtn?.addEventListener("click", () =>
+          refs.menu.classList.remove("is-open")
+        );
+      })();
+    </script>
   </body>
 </html>
