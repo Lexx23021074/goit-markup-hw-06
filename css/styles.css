@@ -71,14 +71,13 @@ img {
   padding: 0 16px;
   margin: 0 auto;
 
-  outline: 2px solid orange;
-  outline-offset: -2px;
+  /* outline: 2px solid orange;
+  outline-offset: -2px; */
 }
 
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
-    padding: 0 16px;
   }
 }
 @media screen and (min-width: 1158px) {
@@ -431,14 +430,16 @@ p {
 
 /* #region Hero */
 .hero {
+  width: 100%;
   margin: 0 auto;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-color: #2e2f42;
+}
 
-  /* Мобілка (база) */
-  max-width: 320px;
+/* Мобілка (база) */
+.hero {
   padding: 72px 0;
   background-image: linear-gradient(
       rgba(46, 47, 66, 0.7),
@@ -447,10 +448,8 @@ p {
     url(../images/hero-mob.jpg);
 }
 
-/* Retina мобілка */
-@media (min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+/* Мобільна Retina */
+@media (min-resolution: 192dpi) {
   .hero {
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -461,9 +460,8 @@ p {
 }
 
 /* Планшет */
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .hero {
-    max-width: 768px;
     padding: 112px 0;
     background-image: linear-gradient(
         rgba(46, 47, 66, 0.7),
@@ -472,10 +470,7 @@ p {
       url(../images/hero-tab.jpg);
   }
 
-  /* Retina планшет — кладемо ВСЕРЕДИНУ запиту 768px */
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
+  @media (min-resolution: 192dpi) {
     .hero {
       background-image: linear-gradient(
           rgba(46, 47, 66, 0.7),
@@ -487,7 +482,7 @@ p {
 }
 
 /* Десктоп */
-@media only screen and (min-width: 1158px) {
+@media screen and (min-width: 1158px) {
   .hero {
     max-width: 1440px;
     padding: 188px 0;
@@ -498,10 +493,7 @@ p {
       url(../images/hero-desk.jpg);
   }
 
-  /* Retina десктоп — кладемо ВСЕРЕДИНУ запиту 1158px */
-  @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
+  @media (min-resolution: 192dpi) {
     .hero {
       background-image: linear-gradient(
           rgba(46, 47, 66, 0.7),
@@ -566,7 +558,7 @@ p {
 /* #endregion */
 
 /* #region Features */
-./* 1. MOBILE FIRST (База) */
+/* 1. MOBILE FIRST (База) */
 .features {
   padding: 96px 0;
 }
@@ -652,27 +644,59 @@ p {
 /* #endregion */
 
 /* #region Team */
+/* mobile */
 .team-section {
   background-color: #f4f4fd;
+  padding: 96px 0;
 }
 .team-title {
+  text-align: center;
   margin-bottom: 72px;
 }
 .team-list {
   display: flex;
-  gap: 24px;
+  flex-direction: column; /* Список в одну колонку */
+  align-items: center; /* Центруємо картки на мобайлі */
+  gap: 72px;
 }
 .team-item {
   background-color: #ffffff;
-  width: calc((100% - 72px) / 4);
+  width: 264px; /* Фіксована ширина картки на мобайлі */
+  /* width: calc((100% - 72px) / 4); */
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+
 .team-card-content {
   padding: 32px 16px;
   text-align: center;
 }
+/* tablet */
+@media only screen and (min-width: 768px) {
+  .team-list {
+    flex-direction: row; /* Ставимо в рядок */
+    flex-wrap: wrap; /* Дозволяємо перенос на 2 рядки */
+    justify-content: center; /* Щоб пара карток була по центру */
+    gap: 64px 24px;
+  }
+}
+/* --- DESKTOP (1158px) --- */
+@media only screen and (min-width: 1158px) {
+  .team-section {
+    padding: 120px 0;
+  }
+
+  .team-list {
+    gap: 24px; /* Тільки горизонтальний відступ */
+  }
+
+  .team-item {
+    /* Ось тепер ділимо на 4 */
+    width: calc((100% - 72px) / 4);
+  }
+}
+
 .team-ill {
 }
 .team-member {
@@ -705,6 +729,7 @@ p {
 .team-soc-icon {
   fill: var(--light);
 }
+
 /* #endregion */
 
 /* #region portfolio */
@@ -839,18 +864,25 @@ p {
 /* #endregion */
 
 /* #region footer */
+
 .page-footer {
   background-color: var(--dark);
-  padding: 100px 0;
+  padding: 96px 0; /* Менший паддінг на мобайлі */
+  /* padding: 100px 0; */
 }
 
 .footer-container {
   display: flex;
-  align-items: baseline;
+  flex-direction: column; /* Все в стовпчик на мобайлі */
+  align-items: center; /* Центруємо все */
+  gap: 72px; /* Відступи між блоками за ТЗ */
+  /* align-items: baseline; */
 }
 
 .footer-info {
-  margin-right: 120px;
+  margin-right: 0; /* Скидаємо десктопний маржин */
+  text-align: center;
+  /* margin-right: 120px; */
 }
 
 .footer-logo {
@@ -865,30 +897,35 @@ p {
 
 .footer-slog {
   color: #f4f4fd;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  /* line-height: 1.5; */
+  /* letter-spacing: 0.02em; */
   max-width: 264px;
+  text-align: left; /* Текст зазвичай зліва для читабельності */
 }
 /* --- Social Media --- */
+
+.footer-social-media {
+  text-align: center;
+}
+
 .footer-social-title {
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
   color: var(--white);
   margin-bottom: 16px;
 }
 
 .footer-social-list {
   display: flex;
+  justify-content: flex-start;
   gap: 16px;
 }
 
+/* zagubleo */
 .footer-social-item {
   width: 40px;
   height: 40px;
 }
-
+/* zagubleo */
 .footer-social-link {
   width: 100%;
   height: 100%;
@@ -899,21 +936,23 @@ p {
   justify-content: center;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+/* zagubleo */
 .footer-social-link:hover,
 .footer-social-link:focus {
   background-color: #31d0aa;
   /* Зелений за ТЗ */
 }
-
+/* zagubleo */
 .footer-social-icon {
   fill: var(--light);
 }
 /* форма subscribe */
 .footer-subscribe {
-  margin-left: auto; /* Притискаємо до правого краю */
+  width: 100%;
+  text-align: center;
+  /* margin-left: auto; Притискаємо до правого краю */
 }
-
+/* zagubleo */
 .footer-subscribe-title {
   margin-bottom: 16px;
   font-weight: 500;
@@ -925,25 +964,114 @@ p {
 
 .footer-subscribe-form {
   display: flex;
-  gap: 24px;
+  flex-direction: column; /* Інпут під кнопкою на мобайлі */
+  align-items: center;
+  gap: 16px;
+}
+.footer-subscribe-label {
+  width: 100%; /* Лейбл має розтягнутися на всю ширину */
+  display: flex;
+  justify-content: center;
 }
 
 .footer-subscribe-input {
-  width: 264px;
+  width: 100%;
+  max-width: 288px; /* Не даємо розтягнутися більше ніж треба */
   height: 40px;
-  border: 1px solid #fff;
   background-color: transparent;
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: 0.04em;
-  padding-left: 16px;
-  color: #fff;
+  border: 1px solid #fff;
   border-radius: 4px;
-  /* Тінь точно за макетом (пункт D1) */
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  padding-left: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  /* width: 264px; */
+  /* font-size: 12px; */
+  /* line-height: 2; */
+  /* letter-spacing: 0.04em; */
+  /* transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+}
+@media screen and (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 72px 24px;
+    padding-left: 108px;
+  }
+  .footer-subscribe-btn {
+    margin: 0;
+  }
+
+  .footer-info {
+    width: 264px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-social-media {
+    width: 208px;
+    text-align: left;
+  }
+
+  .footer-subscribe {
+    width: 100%;
+    text-align: left;
+  }
+
+  .footer-subscribe-title {
+    margin-bottom: 16px;
+  }
+  .footer-subscribe-label {
+    /* Скидаємо центрування і притискаємо інпут вліво */
+    justify-content: flex-start;
+    /* Можна також поставити width: auto, якщо лейбл заважає */
+    width: auto;
+  }
+
+  .footer-subscribe-form {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .footer-subscribe-input {
+    width: 264px;
+    margin: 0;
+  }
 }
 
+/* 2. ДЕСКТОП (1158px) - Повертаємо твій ідеальний робочий варіант */
+@media screen and (min-width: 1158px) {
+  .page-footer {
+    padding: 100px 0;
+  }
+
+  .footer-container {
+    flex-wrap: nowrap; /* Все знову в один ряд */
+    padding-left: 15px; /* Скидаємо планшетний паддінг */
+    gap: 0; /* Повертаємося до твоїх маржинів */
+  }
+
+  .footer-info {
+    margin-right: 120px; /* Твій десктопний відступ */
+  }
+
+  .footer-social-media {
+    margin-right: 80px; /* Твій десктопний відступ */
+  }
+
+  .footer-subscribe {
+    width: auto; /* Скасовуємо 100% */
+    margin-left: auto; /* Притискаємо форму в самий край */
+  }
+}
+/* #endregion */
 .footer-subscribe-input::placeholder {
   color: #fff;
 }
@@ -1004,15 +1132,23 @@ p {
 }
 
 .modal {
+  width: 95%; /* Гумова ширина для мобайла */
+  max-width: 408px; /* Але не більше 408px */
+  min-height: 584px;
+
   position: relative; /* Додаємо контекст для кнопки-хрестика */
 
-  width: 408px;
-  min-height: 584px;
   background-color: #fcfcfc;
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 408px; /* Фіксована на планшеті та десктопі */
+  }
 }
 
 .modal-close-btn {
