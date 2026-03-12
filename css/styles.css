@@ -833,17 +833,16 @@ p {
     width: calc((100% - 48px) / 3); /* 3 колонки на десктопі */
     box-shadow: none; /* ПРИМУСОВО прибираємо на десктопі */
   }
+  .portfolio-list {
+    column-gap: 24px;
+    row-gap: 48px; /* Повертаємо десктопний відступ замість планшетних 72px */
+  }
   .portfolio-item:hover {
     /* Додаємо тінь ТІЛЬКИ при наведенні */
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
       0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   }
 }
-
-/* .portfolio-item:hover {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-} */
 
 .portfolio-image-wrapper {
   position: relative;
@@ -1021,6 +1020,7 @@ p {
     justify-content: flex-start;
     gap: 72px 24px;
     padding-left: 108px;
+    padding-right: 108px;
   }
   .footer-social-list {
     justify-content: flex-start; /* Повертаємо вліво від планшета */
@@ -1079,6 +1079,7 @@ p {
 
   .footer-container {
     flex-wrap: nowrap; /* Все знову в один ряд */
+    padding-right: 15px;
     padding-left: 15px; /* Скидаємо планшетний паддінг */
     gap: 0; /* Повертаємося до твоїх маржинів */
   }
