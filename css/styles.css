@@ -173,7 +173,7 @@ p {
   z-index: 999;
 
   /* Обмежуємо ширину, щоб не пливла */
-  max-width: 320px; /* Це стандарт для великих телефонів, або 480px */
+  /* max-width: 320px; */
 
   display: flex;
   flex-direction: column;
@@ -748,7 +748,6 @@ p {
 /* #endregion */
 
 /* #region portfolio */
-/* теоретично він задубльований з .section але оскільки пройшло перевірки, то я краще залишу і зроблю медіа */
 .portfolio-section {
   padding: 96px 0;
 }
@@ -831,6 +830,9 @@ p {
 @media screen and (min-width: 1158px) {
   .portfolio-item {
     width: calc((100% - 48px) / 3); /* 3 колонки на десктопі */
+  }
+  .portfolio-item:hover {
+    /* Додаємо тінь ТІЛЬКИ при наведенні */
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
       0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
   }
@@ -1151,13 +1153,18 @@ p {
 }
 
 .modal {
-  width: calc(100% - 36px); /* Гумова ширина для мобайла */
+  /* 1. Робимо гумову ширину для мобайла */
+  width: calc(100% - 36px);
   max-width: 392px; /* Але не більше 408px */
+
+  /* 2. Прибираємо фіксовану висоту*/
+  min-height: auto;
   /* min-height: 584px; */
+
+  /* 3. Встановлюємо правильні мобільні паддінги (16px) */
   padding: 72px 16px 24px 16px; /* Менші бокові паддінги на мобайлі */
 
   position: relative; /* Додаємо контекст для кнопки-хрестика */
-
   background-color: #fcfcfc;
   border-radius: 4px;
   padding: 72px 24px 24px 24px;
@@ -1168,7 +1175,8 @@ p {
 @media screen and (min-width: 768px) {
   .modal {
     width: 408px; /* Фіксована на планшеті та десктопі */
-    padding: 72px 24px 24px 24px; /* Повертаємо стандартні */
+    /* 4. Повертаємо десктопні розміри та паддінги (24px) */
+    padding: 72px 24px 24px 24px;
   }
 }
 
